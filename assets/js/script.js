@@ -1,5 +1,5 @@
-    var countDownDate = new Date("Oct 26, 2023 09:00:00").getTime();
-    var countdownfunction = setInterval(function() {
+var countDownDate = new Date("Oct 26, 2023 09:00:00").getTime();
+var countdownfunction = setInterval(function () {
     var now = new Date().getTime();
     var distance = countDownDate - now;
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -8,121 +8,120 @@
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     document.getElementById("timestamp").innerHTML = "😝 O evento começará em " + days + "d : " + hours + "h : "
-    + minutes + "m : " + seconds + "s 😝";
+        + minutes + "m : " + seconds + "s 😝";
 
     if (distance < 0) {
         clearInterval(countdownfunction);
         document.getElementById("countdown").innerHTML = "😝 EVENTO EM ANDAMENTO 😝";
-        }
-    }, 1000);
-
-    function aumentarFonte() {
-        let elementos = document.querySelectorAll('body *');
-        for (let i = 0; i < elementos.length; i++) {
-            let estilo = window.getComputedStyle(elementos[i]);
-            let tamanhoAtual = parseFloat(estilo.fontSize);
-            elementos[i].style.fontSize = (tamanhoAtual + 1) + 'px';
-        }
     }
-  
-    function diminuirFonte() {
-        let elementos = document.querySelectorAll('body *');
-        for (let i = 0; i < elementos.length; i++) {
-            let estilo = window.getComputedStyle(elementos[i]);
-            let tamanhoAtual = parseFloat(estilo.fontSize);
-            elementos[i].style.fontSize = (tamanhoAtual - 1) + 'px';
-        }
-    }
+}, 1000);
 
-    const slides = document.querySelector('#slide');
-    const slideWidth = slides.clientWidth;
-    let isPaused = false;
-    let intervalId;
-    let currentIndex = 0;
-    
-    function slideAnimation() {
-        currentIndex++;
-        if (currentIndex >= slides.children.length) {
-            currentIndex = 0;
-            slides.style.transition = 'none';
-            slides.style.transform = 'translateX(0)';
+const slides = document.querySelectorAll('.card');
+const slideTransf = document.querySelector('#slide')
+const prevBtn = document.querySelector('#prevButton');
+const nextBtn = document.querySelector('#nextButton');
+const pauseBtn = document.querySelector('#pauseButton');
+
+let isPaused = false;
+let intervalId;
+let currentIndex = 0;
+
+function slideAnimation() {
+    currentIndex++;
+    if (currentIndex >= slides.length) {
+        currentIndex = 0;
+    }
+    slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+            slide.id = 'c2';
+            switch (currentIndex) {
+                case 1:
+                    slideTransf.style.transform = 'translateX(580px)';
+                    break;
+                case 2:
+                    slideTransf.style.transform = 'translateX(0px)';
+                    break;
+                case 3:
+                    slideTransf.style.transform = 'translateX(-590px)';
+                    break;
+                case 4:
+                    slideTransf.style.transform = 'translateX(-1180px)';
+                    break;
+                default:
+                    slideTransf.style.transform = 'translateX(1180px)';
+                    break;
+            }
         } else {
-            slides.style.transition = 'transform 1s';
-            slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
+            slide.id = 'c1';
+            slide.style.transform = '';
         }
-    }
+    });
+}
 
-    function prevSlide() {
-        currentIndex--;
-        if (currentIndex < 0) {
-        currentIndex = slides.children.length - 1;
-            slides.style.transition = 'none';
-            slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
+
+
+
+function prevSlide() {
+    currentIndex--;
+    if (currentIndex  > 5 ) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = 4
+    }
+    slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+            slide.id = 'c2';
+            switch (currentIndex) {
+                case 1:
+                    slideTransf.style.transform = 'translateX(580px)';
+                    break;
+                case 2:
+                    slideTransf.style.transform = 'translateX(0px)';
+                    break;
+                case 3:
+                    slideTransf.style.transform = 'translateX(-590px)';
+                    break;
+                case 4:
+                    slideTransf.style.transform = 'translateX(-1180px)';
+                    break;
+                default:
+                    slideTransf.style.transform = 'translateX(1180px)';
+                    break;
+            }
+            console.log(currentIndex)
         } else {
-            slides.style.transition = 'transform 1s';
-            slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
+            slide.id = 'c1';
+            slide.style.transform = '';
         }
-    }
+    })
+}
 
-    function nextSlide() {
-        slideAnimation();
-    }
+function nextSlide() {
+    slideAnimation()
+}
 
-    function pauseSlide() {
-        const pauseButton = document.getElementById('pauseButton');
-        
-        if (!isPaused) {
-        clearInterval(intervalId);
-            isPaused = true;
-            pauseButton.classList.remove('fa-pause');
-            pauseButton.classList.add('fa-play');
-        } else {
-            intervalId = setInterval(slideAnimation, 5000);
-            isPaused = false;
-            pauseButton.classList.remove('fa-play');
-            pauseButton.classList.add('fa-pause');
-        }
-    }
-
-    var audio = document.getElementById("audioPlayer");
-    var progressBar = document.getElementById("progress");
-    var playButton = document.getElementById("playButton");
-
-    function playPause() {
-        if (audio.paused) {
-            audio.play();
-            playButton.innerHTML = '<i class="fas fa-pause"></i>';
-        } else {
-            audio.pause();
-            playButton.innerHTML = '<i class="fas fa-play"></i>';
-        }
-    }
-
-    audio.addEventListener("timeupdate", updateProgress);
-
-    function updateProgress() {
-        var progress = (audio.currentTime / audio.duration) * 100;
-        progressBar.style.width = progress + "%";
-    }
-
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
+function pauseSlide() {
     const pauseButton = document.getElementById('pauseButton');
 
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-    pauseButton.addEventListener('click', pauseSlide);
+    if (!isPaused) {
+        clearInterval(intervalId);
+        isPaused = true;
+        pauseButton.classList.remove('fa-pause');
+        pauseButton.classList.add('fa-play');
+    } else {
+        intervalId = setInterval(slideAnimation, 5000);
+        isPaused = false;
+        pauseButton.classList.remove('fa-play');
+        pauseButton.classList.add('fa-pause');
+    }
+}
 
-    intervalId = setInterval(slideAnimation, 5000);
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const pauseButton = document.getElementById('pauseButton');
 
-    var videoIframe = document.getElementById('ifr');
-    var originalBoxShadow = videoIframe.style.boxShadow;
-    
-    var videoIframe = document.getElementById('ifr');
-var originalBoxShadow = videoIframe.style.boxShadow;
+prevButton.addEventListener('click', prevSlide);
+nextButton.addEventListener('click', nextSlide);
+pauseButton.addEventListener('click', pauseSlide);
 
-var videoIframe = document.getElementById('ifr');
-
-  videoIframe.addEventListener('click', function() {
-    videoIframe.classList.toggle('activ');
-})
+intervalId = setInterval(slideAnimation, 5000);

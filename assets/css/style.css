@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,11 +9,11 @@
     flex-wrap: wrap;
 }
 
-body{
+body {
     overflow-x: hidden;
 }
 
-.body{
+.body {
     background-color: #000;
     color: #fff;
     display: flex;
@@ -21,11 +21,11 @@ body{
     flex-direction: column;
 }
 
-.none{
+.none {
     display: none;
 }
 
-#font{
+#font {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -37,7 +37,7 @@ body{
     top: 80px;
 }
 
-.radial{
+.radial {
     position: absolute;
     width: 300px;
     height: 300px;
@@ -46,22 +46,22 @@ body{
     filter: blur(200px);
 }
 
-.radial{
+.radial {
     top: 0;
     right: 0;
 }
 
-.radial:nth-child(2){
+.radial:nth-child(2) {
     top: 80vh;
     left: 0;
 }
 
-.radial:nth-child(3){
+.radial:nth-child(3) {
     top: 150vh;
     right: 0;
 }
 
-li{
+li {
     list-style: none;
 }
 
@@ -71,14 +71,16 @@ li{
 
 .cc:hover {
     box-shadow: none;
+    color: #9000ff;
+    transition: color .4s linear;
 }
 
-a{
+a {
     text-decoration: none;
     color: #fff;
 }
 
-#loading{
+#loading {
     width: 100vw;
     height: 100vh;
     display: none;
@@ -87,7 +89,7 @@ a{
     align-items: center;
 }
 
-#infotec{
+#infotec {
     display: none;
     position: absolute;
     margin-top: 100vh;
@@ -98,23 +100,23 @@ a{
     -webkit-text-stroke: 2px #9000ff;
 }
 
-header{
+header {
     margin-top: 50px;
     width: 100%;
     display: inline-flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 150px;
+    z-index: 1000;
 }
 
-ul{
+ul {
     display: flex;
     gap: 40px;
     font-size: 14px;
     font-weight: medium;
 }
 
-#logo{
+#logo {
     cursor: pointer;
     display: flex;
     font-size: 20px;
@@ -182,40 +184,40 @@ ul{
     height: 20px;
 }
 
-.menu1{
+.menu1 {
     background-color: #9000ff;
     width: 24px;
     height: 2px;
 }
 
-.menu2{
+.menu2 {
     background-color: #9000ff;
     width: 17px;
     height: 2px;
 }
 
-.menu3{
+.menu3 {
     background-color: #9000ff;
     width: 20px;
     height: 2px;
 }
 
-main{
+main {
     margin-top: 56.93px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    
+
 }
 
-main img{
+main img {
     z-index: 1;
     margin-top: -50px;
     margin-bottom: -20px;
 }
 
-h2{
+h2 {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 80px;
     font-style: normal;
@@ -228,7 +230,7 @@ h2{
     position: relative;
 }
 
-main h1{
+main h1 {
     color: #FFF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: Manrope;
@@ -250,7 +252,7 @@ h3#timestamp {
     font-size: 50px;
 }
 
-#about{
+#about {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,22 +266,32 @@ h3#timestamp {
     margin: 146px 146px;
 }
 
-#projects{
+.rotating-image{
+    margin: 10vh 0;
+}
+
+#projects {
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
     width: 100%;
+    overflow-x: hidden;
     min-height: 100vh;
 }
 
-#slide{
+#slide {
     margin-top: 50px;
     margin-bottom: 50px;
     display: flex;
-    width: 500vw;
+    width: 100vw;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: nowrap;
+    gap: 150px;
+    position: relative;
+    transform: translateX(1180px);
+    transition: transform 2.2s linear;
 }
 
 .card {
@@ -292,18 +304,21 @@ h3#timestamp {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: all .8;
 }
 
-.categoria {
+
+
+#c2 > .textCard > .categoria {
     color: #9000ff;
     font-family: 'Inter', sans-serif;
-    font-size: 18.4px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
-.card p {
+#c2 > .textCard > p {
     color: rgba(0, 0, 0, 0.80);
     font-family: 'Inter', sans-serif;
     font-size: 18.4px;
@@ -314,7 +329,7 @@ h3#timestamp {
     text-align: left;
 }
 
-.card h3 {
+#c2 > .textCard > h3 {
     width: 521px;
     color: #000;
     font-family: 'Inter', sans-serif;
@@ -326,46 +341,80 @@ h3#timestamp {
     margin: 9px 0px 9px 0px;
 }
 
+#c1 {
+    width: 440px;
+    height: 508px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    filter: blur(.7px);
+    transition: all 2s ease;
+}
+
+#c1 > .textCard > .categoria { 
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    margin-bottom: 5px;
+    width: 390px;
+    height: 18px;
+    flex-shrink: 0;
+    color: #9000ff;
+}
+
+#c1 > .textCard > h3 {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 280px;
+    height: 35px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#c1 > .textCard > p {
+    width: 390px;
+    height: 97px;
+    flex-shrink: 0;
+    color: rgba(0, 0, 0, 0.80);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+
+}
+
+#c1 > .img {
+    width: 390px;
+    height: 230px;
+    margin-bottom: 40px;
+}
 
 .img {
     width: 510px;
     height: 301px;
     flex-shrink: 0;
     border-radius: 5px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin-bottom: 46px;
-    transition: background .7s ease;
 }
 
 
-.img:hover {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-}
-
-#c1 > .img {
-    background: url(../img/CA.png);
-}
-
-#c1 > .img:hover {
-    background: url(../img/Group\ 7.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-}
-
-.navigation{
+.navigation {
     display: flex;
     width: 100vw;
     justify-content: center;
     text-align: center;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 #pauseButton {
@@ -385,6 +434,8 @@ h3#timestamp {
 
 #devD {
     display: flex;
+    align-self: center;
+    justify-content: center;
     flex-direction: column;
     width: 561px;
     height: 600px;
@@ -395,7 +446,7 @@ h3#timestamp {
 
 #devD h3 {
     color: #FFF;
-    font-size: 42.546px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -405,7 +456,7 @@ h3#timestamp {
 #devD p {
     width: 561px;
     color: #FFF;
-    font-size: 23.229px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -417,6 +468,10 @@ h3#timestamp {
     flex-direction: row;
 }
 
+#devD a {
+    font-size: 10px;
+}
+
 div a {
     background-color: #9000ff;
     padding: 10px;
@@ -425,28 +480,29 @@ div a {
     gap: 10px;
 }
 
-div a:hover, footer a:hover {
+div a:hover,
+footer a:hover {
     box-shadow: 0px 0px 10px #9000ff;
 }
 
 iframe {
     width: 475px;
-    height: 255px;  
+    height: 255px;
     flex-shrink: 0;
     border-radius: 15px;
     box-shadow: 0px 0px 5px 0px #9000ff;
     transition: box-shadow 0.8s ease;
 }
 
-iframe:hover{
+iframe:hover {
     box-shadow: 0px 0px 150px 0px #9000ff;
 }
 
 .video-playing {
     box-shadow: 0px 0px 100px 0px #9000ff;
-  }
+}
 
-footer{
+footer {
     display: flex;
     align-items: center;
     height: 90px;
@@ -479,7 +535,8 @@ footer span {
     color: #9000ff;
 }
 
-.git i, .insta i {   
+.git i,
+.insta i {
     font-size: 40px;
 }
 
@@ -494,7 +551,8 @@ footer span {
 
 }
 
-.git, .insta {
+.git,
+.insta {
     width: 170px;
     height: 40px;
     color: #FFF;
@@ -507,7 +565,8 @@ footer span {
     font-family: 'Manrope';
 }
 
-.git:hover, .insta:hover {
+.git:hover,
+.insta:hover {
     color: #9000ff;
 }
 
@@ -516,44 +575,70 @@ footer span {
 }
 
 
-.cor{
+.cor {
     color: #9000ff;
 }
 
 @media (max-width: 600px) {
-    .body{
+    .body {
         padding: 0px;
         margin: 0;
         transform: translateX(-150px);
         width: 100%;
-    }#music{
+    }
+
+    #music {
         display: none;
-    }nav{
+    }
+
+    nav {
         display: none;
-    }main img{
+    }
+
+    main img {
         margin: 0;
         width: 120vw;
-    }main h1{
+    }
+
+    main h1 {
         font-size: 40px;
-    }h2{
+    }
+
+    h2 {
         font-size: 40px;
-    }h3#timestamp{
+    }
+
+    h3#timestamp {
         font-size: 15px;
         width: 100%;
-    }#about{
+    }
+
+    #about {
         width: 100%;
-    }#projects{
+    }
+
+    #projects {
         width: 100%;
-    }#dev{
+    }
+
+    #dev {
         width: 100%;
         padding: 20px;
-    }body{
+    }
+
+    body {
         background-color: #000;
-    }.radial{
+    }
+
+    .radial {
         display: none;
-    }#social{
+    }
+
+    #social {
         margin-left: 150px;
-    }#about p{
+    }
+
+    #about p {
         font-size: 30px;
         padding: 20px;
     }

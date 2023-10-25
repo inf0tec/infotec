@@ -12,7 +12,7 @@ var countdownfunction = setInterval(function () {
 
     if (distance < 0) {
         clearInterval(countdownfunction);
-        document.getElementById("countdown").innerHTML = "😝 EVENTO EM ANDAMENTO 😝";
+        document.getElementById("countdown").innerHTML = "😝 Procure um monitor para conhecer de perto 😝";
     }
 }, 1000);
 
@@ -34,26 +34,8 @@ function slideAnimation() {
     slides.forEach((slide, index) => {
         if (index === currentIndex) {
             slide.id = 'c2';
-            switch (currentIndex) {
-                case 1:
-                    slideTransf.style.transform = 'translateX(32.5vw)';
-                    break;
-                case 2:
-                    slideTransf.style.transform = 'translateX(0vw)';
-                    break;
-                case 3:
-                    slideTransf.style.transform = 'translateX(-32.5vw)';
-                    break;
-                case 4:
-                    slideTransf.style.transform = 'translateX(-65vw)';
-                    break;
-                default:
-                    slideTransf.style.transform = 'translateX(65vw)';
-                    break;
-            }
         } else {
             slide.id = 'c1';
-            slide.style.transform = '';
         }
     });
 }
@@ -63,35 +45,17 @@ function slideAnimation() {
 
 function prevSlide() {
     currentIndex--;
-    if (currentIndex  > 5 ) {
+    if (currentIndex  > slides.length ) {
         currentIndex = 0;
     } else if (currentIndex < 0) {
-        currentIndex = 4
+        currentIndex = 1
     }
     slides.forEach((slide, index) => {
         if (index === currentIndex) {
             slide.id = 'c2';
-            switch (currentIndex) {
-                case 1:
-                    slideTransf.style.transform = 'translateX(580px)';
-                    break;
-                case 2:
-                    slideTransf.style.transform = 'translateX(0px)';
-                    break;
-                case 3:
-                    slideTransf.style.transform = 'translateX(-590px)';
-                    break;
-                case 4:
-                    slideTransf.style.transform = 'translateX(-1180px)';
-                    break;
-                default:
-                    slideTransf.style.transform = 'translateX(1180px)';
-                    break;
-            }
             console.log(currentIndex)
         } else {
             slide.id = 'c1';
-            slide.style.transform = '';
         }
     })
 }
@@ -126,26 +90,6 @@ pauseButton.addEventListener('click', pauseSlide);
 
 intervalId = setInterval(slideAnimation, 5000);
 
-function ari() {
-    window.location.href = "https://arineto1.github.io/fetec"
-}
-
-function pong() {
-    window.location.href = "../pong.html"
-}
-
-function robo () {
-    window.location.href = "../robotica.html";
-}
-
-function scratch() {
-    window.location.href = "../scratch.html";
-}
-
-function spotify() {
-    window.location.href = "../spotify.html"
-}
-
 function inicio() {
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 }
